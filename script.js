@@ -2,8 +2,6 @@ document.getElementById('feedbackForm').addEventListener('submit', async (e) => 
     e.preventDefault();
 
     const dados = {
-        vai_almocar: document.getElementById('vai_almocar').value,
-        segunda_proteina: document.getElementById('segunda_proteina').value,
         qualidade_comida: document.getElementById('qualidade_comida').value
     };
 

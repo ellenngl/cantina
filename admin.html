@@ -178,6 +178,11 @@ async function carregarRelatorio(data=''){
             positivas++;
         }
 
+        if(item.qualidade_comida === 'Eh'){
+            Eh++;
+            medianas++;
+        }
+
         if(item.qualidade_comida === 'Ruim'){
             ruim++;
         }

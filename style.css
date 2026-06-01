@@ -39,6 +39,10 @@ body {
 /* ==========================================================================
    Container Principal (O "Card" do formulário)
    ========================================================================== */
+#cabeçalho {
+    text-align: center;
+    margin-bottom: 600px;
+}
 .container {
     background-color: var(--card-color);
     width: 100%;
