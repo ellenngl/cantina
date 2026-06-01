@@ -79,18 +79,20 @@
 
     <div class="cards">
         <div class="card">
-            <h2>Vão Almoçar</h2>
-            <div class="numero" id="totalAlmoco">0</div>
-        </div>
-
-        <div class="card">
-            <h2>2ª Proteína</h2>
-            <div class="numero" id="totalProteina">0</div>
-        </div>
-
-        <div class="card">
             <h2>Avaliações Positivas</h2>
             <div class="numero" id="avaliacoesPositivas">0</div>
+        </div>
+    </div>
+    <div class="cards">
+        <div class="card">
+            <h2>Avaliações Medianas</h2>
+            <div class="numero" id="avaliacoesMedianas">0</div>
+        </div>
+    </div>
+    <div class="cards">
+        <div class="card">
+            <h2>Avaliações Negativas</h2>
+            <div class="numero" id="avaliacoesNegativas">0</div>
         </div>
     </div>
 
@@ -114,8 +116,6 @@
         <thead>
             <tr>
                 <th>ID</th>
-                <th>Vai Almoçar</th>
-                <th>2ª Proteína</th>
                 <th>Qualidade</th>
                 <th>Data</th>
             </tr>
@@ -145,36 +145,28 @@ async function carregarRelatorio(data=''){
     carregarRelatorio(data);
 
 }
-
-    let totalAlmoco = 0;
-    let totalProteina = 0;
     let positivas = 0;
+    let negativas = 0;
+    let medianas = 0;
 
-    let otimo = 0;
-    let bom = 0;
-    let ruim = 0;
+    let Pessimo = 0;
+    let Ruim = 0;
+    let Eh = 0;
+    let Bom = 0;
+    let Excelente = 0;
 
     const tabela = document.getElementById('tabelaDados');
 
     tabela.innerHTML = '';
 
     dados.forEach(item => {
-
-        if(item.vai_almocar === 'Sim'){
-            totalAlmoco++;
-        }
-
-        if(item.segunda_proteina === 'Sim'){
-            totalProteina++;
-        }
-
-        if(item.qualidade_comida === 'Ótimo'){
-            otimo++;
+        if(item.qualidade_comida === 'Excelente'){
+            Excelente++;
             positivas++;
         }
 
         if(item.qualidade_comida === 'Bom'){
-            bom++;
+            Bom++;
             positivas++;
         }
 
@@ -184,31 +176,34 @@ async function carregarRelatorio(data=''){
         }
 
         if(item.qualidade_comida === 'Ruim'){
-            ruim++;
+            Ruim++;
+            negativas++;
+        }
+
+        if(item.qualidade_comida === 'Pessimo'){
+            Pessimo++;
+            negativas++;
         }
 
         tabela.innerHTML += `
             <tr>
                 <td>${item.id}</td>
-                <td>${item.vai_almocar}</td>
-                <td>${item.segunda_proteina}</td>
                 <td>${item.qualidade_comida}</td>
                 <td>${item.data_registro}</td>
             </tr>
         `;
     });
 
-    document.getElementById('totalAlmoco').textContent = totalAlmoco;
-    document.getElementById('totalProteina').textContent = totalProteina;
     document.getElementById('avaliacoesPositivas').textContent = positivas;
-
+    document.getElementById('avaliacoesMedianas').textContent = medianas;
+    document.getElementById('avaliacoesNegativas').textContent = negativas;
     new Chart(document.getElementById('graficoQualidade'), {
         type:'bar',
         data:{
-            labels:['Ótimo','Bom','Ruim'],
+            labels:['Pessimo','Ruim','Eh','Bom','Excelente'],
             datasets:[{
                 label:'Qualidade da Comida',
-                data:[otimo,bom,ruim]
+                data:[Pessimo,Ruim,Eh,Bom,Excelente]
             }]
         }
     });

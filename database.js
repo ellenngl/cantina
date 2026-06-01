@@ -15,8 +15,6 @@ const db = new sqlite3.Database(dbPath, (err) => {
         db.run(`
             CREATE TABLE IF NOT EXISTS feedbacks (
                 id INTEGER PRIMARY KEY AUTOINCREMENT,
-                vai_almocar TEXT,
-                segunda_proteina TEXT,
                 qualidade_comida TEXT,
                 data_registro DATETIME DEFAULT CURRENT_TIMESTAMP
             )

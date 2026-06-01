@@ -10,10 +10,10 @@ app.use(express.static(__dirname));
 
 // Rota para salvar a resposta do aluno
 app.post('/api/feedback', (req, res) => {
-    const { vai_almocar, segunda_proteina, qualidade_comida } = req.body;
-    const sql = `INSERT INTO feedbacks (vai_almocar, segunda_proteina, qualidade_comida) VALUES (?, ?, ?)`;
+    const {qualidade_comida } = req.body;
+    const sql = `INSERT INTO feedbacks (qualidade_comida) VALUES (?)`;
     
-    db.run(sql, [vai_almocar, segunda_proteina, qualidade_comida], function(err) {
+    db.run(sql, [qualidade_comida], function(err) {
         if (err) return res.status(400).json({ error: err.message });
         res.json({ message: 'Feedback registrado com sucesso!', id: this.lastID });
     });
@@ -65,7 +65,7 @@ app.post('/api/login', (req,res)=>{
     const { usuario, senha } = req.body;
 
     // LOGIN SIMPLES
-    if(usuario === 'admin' && senha === '1234'){
+    if(usuario === 'coordenacaoMCVM2026' && senha === 'MCVM2026'){
 
         res.json({
             sucesso:true
