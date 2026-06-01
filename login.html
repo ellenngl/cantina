@@ -9,17 +9,44 @@
 <style>
 
 body{
-    display:flex;
+    display:contents;
     justify-content:center;
     align-items:center;
     height:100vh;
 }
-
+#cabeçalho{
+    background-color:rgb(80, 196, 45);
+    text-align: center;
+    padding: 10px;
+}
+#ceara{
+    width:200px;
+    margin-bottom: -125px;
+    margin-right: 3000px;
+}
+#maca{
+    width: 60px;
+    margin-bottom: -33px;
+    margin-left: -450px;
+}
+#titulo{
+    color: gold;
+    font-size: 60px;
+    margin-top: -64px;
+}
+#subtitulo{
+    align-self: center;
+    margin-top: -30px;
+    font-size: 20px;
+}
 .login-box{
+    margin-top: 100px;
+    justify-content: center;
     background:white;
     padding:40px;
     border-radius:10px;
     width:350px;
+    margin-left: 770px;
     box-shadow:0 2px 10px rgba(0,0,0,0.1);
 }
 
@@ -27,20 +54,32 @@ input{
     width:100%;
     padding:12px;
     margin-bottom:15px;
+    border-radius: 10px;
+    border-color: rgb(212, 212, 212);
 }
 
 button{
     width:100%;
+    height: 30px;
+    background-color: rgb(153, 243, 125);
+    border: rgb(22, 90, 13);
+    border-radius: 10px;;
 }
 
 </style>
 </head>
 
 <body>
+    <header id="cabeçalho">
+        <img  id="ceara" src="IMG/ceara.png">
+        <img id="maca" src="IMG/maça.png">
+        <h1 id="titulo"> NUTRIAVALIA</h1>
+        <p id="subtitulo">Sua partcipação é importante</p>
+    </header><br><br>
 
 <div class="login-box">
 
-    <h1>Área Administrativa</h1>
+    <h1>Login</h1>
 
     <form id="loginForm">
 
