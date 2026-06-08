@@ -3,26 +3,53 @@
 <head>
     <meta charset="UTF-8">
     <title>Refeitório - Pesquisa</title>
+    <link rel="icon" href="IMG/favicon.ico" type="image/png">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-       <header id="cabeçalho">
-        <h1>NUTRIAVALIA</h1>
-        <P>Sua participação é importante!</P>
+    <header id="cabeçalho">
+        <img  id="ceara" src="IMG/ceara.png">
+        <img id="maca" src="IMG/maça.png">
+        <h1 id="titulo"> NUTRI-AVALIA</h1>
+        <p id="subtitulo">Sua participação é importante!</p>
     </header>
     <div class="container">
-        <h1>Pesquisa do Refeitório </h1>
         <form id="feedbackForm">
             <h3>Como estava a qualidade da comida ontem?</h3>
-            <select id="qualidade_comida" required>
-                <option value="Pessimo">Péssimo</option>
-                <option value="Ruim">Ruim</option>
-                <option value="Eh">Eh...</option>
-                <option value="Bom">Bom</option>
-                <option value="Excelente">Excelente</option>
-            </select>
+     <div class="avaliacao">
 
-            <button type="submit">Enviar Resposta</button>
+    <input type="radio" name="qualidade_comida" id="Pessimo" value="Pessimo" required>
+    <label for="Pessimo">
+        <img src="img/pessimo.png" alt="Péssimo">
+        <span>Péssimo</span>
+    </label>
+
+    <input type="radio" name="qualidade_comida" id="Ruim" value="Ruim">
+    <label for="Ruim">
+        <img src="img/ruim.png" alt="Ruim">
+        <span>Ruim</span>
+    </label>
+
+    <input type="radio" name="qualidade_comida" id="Eh" value="Eh">
+    <label for="Eh">
+        <img src="img/eh.png" alt="Eh">
+        <span>Eh...</span>
+    </label>
+
+    <input type="radio" name="qualidade_comida" id="Bom" value="Bom">
+    <label for="Bom">
+        <img src="img/bom.png" alt="Bom">
+        <span>Bom</span>
+    </label>
+
+    <input type="radio" name="qualidade_comida" id="Excelente" value="Excelente">
+    <label for="Excelente">
+        <img src="img/excelente.png" alt="Excelente">
+        <span>Excelente</span>
+    </label>
+
+</div>
+     <button type="submit">Enviar</button>
         </form>
     </div>
     <script src="script.js"></script>

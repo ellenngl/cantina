@@ -1,8 +1,10 @@
 document.getElementById('feedbackForm').addEventListener('submit', async (e) => {
-    e.preventDefault();
+    e.preventDefault(); //Quando o usuário clicar em Enviar Resposta, executa essa função.
 
     const dados = {
-        qualidade_comida: document.getElementById('qualidade_comida').value
+           qualidade_comida: document.querySelector( //Vai pegar o valor do input selecionado, ou seja, a resposta do usuário.
+            'input[name="qualidade_comida"]:checked' //entre todos esses radios, pega só o que o usuário clicou
+        ).value //Diz o valor (Excelente, Bom, Eh, Ruim ou Pessimo) do radio selecionado
     };
 
     try {
@@ -13,7 +15,7 @@ document.getElementById('feedbackForm').addEventListener('submit', async (e) => 
         });
 
         if (response.ok) {
-            alert('Muito obrigado! Sua resposta foi registrada.');
+            alert('Resposta registrada.');
             document.getElementById('feedbackForm').reset();
         }
     } catch (error) {

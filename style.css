@@ -42,7 +42,11 @@ body {
 #cabeçalho {
     text-align: center;
     margin-bottom: 600px;
+    background-color:rgb(80, 196, 45);
+    text-align: center;
+    padding: 10px;
 }
+
 .container {
     background-color: var(--card-color);
     width: 100%;
@@ -52,6 +56,26 @@ body {
     transition: var(--transition);
 }
 
+#ceara{
+    width:200px;
+    margin-bottom: -125px;
+    margin-right: 3000px;
+}
+#maca{
+    width: 60px;
+    margin-bottom: -33px;
+    margin-left: -450px;
+}
+#titulo{
+    color: gold;
+    font-size: 60px;
+    margin-top: -64px;
+}
+#subtitulo{
+    align-self: center;
+    margin-top: -30px;
+    font-size: 20px;
+}
 /* Efeito sutil ao passar o mouse no card (desktop) */
 .container:hover {
     box-shadow: 0 8px 15px rgba(0, 0, 0, 0.15);
@@ -68,4 +92,41 @@ h1 {
     font-weight: 700;
 }
 
-/* Subtítulo ou descrição
+/* ==========================================================================
+   Formulário e Inputs
+   ========================================================================== */
+   .avaliacao {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+
+.avaliacao input {
+    display: none;
+}
+
+.avaliacao label {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    cursor: pointer;
+}
+
+.avaliacao img {
+    width: 50px;
+    height: 50px;
+    border: 2px solid transparent;
+    border-radius: 10px;
+    transition: 0.2s;
+}
+
+.avaliacao span {
+    margin-top: 5px;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.avaliacao input:checked + label img {
+    border-color: #4CAF50;
+    transform: scale(1.1);
+}
