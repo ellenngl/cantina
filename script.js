@@ -22,3 +22,12 @@ document.getElementById('feedbackForm').addEventListener('submit', async (e) => 
         console.error('Erro ao enviar feedback:', error);
     }
 });
+document.getElementById('reclamacaoForm').addEventListener('submit', async (e) => {
+    e.preventDefault(); //impede a pagina de recarregar quando o usuário clicar em Enviar Reclamação
+
+    const dados = {
+    texto_reclamacao: texto
+};
+
+
+});

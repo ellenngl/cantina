@@ -151,7 +151,7 @@
 
 </div>
 
-<script>
+<script> //se o admin não estiver logado, redireciona para a página de login, se estiver logado, carrega o relatório normalmente
     if(localStorage.getItem('adminLogado') !== 'true'){
 
     window.location.href = 'login.html';
@@ -211,7 +211,8 @@ async function carregarRelatorio(data=''){
         }
 
         tabela.innerHTML += `
-            <tr>
+            <tr> //pega os dados do banco e exibe na tabela
+
                 <td>${item.id}</td>
                 <td>${item.qualidade_comida}</td>
                 <td>${item.data_registro}</td>
@@ -236,6 +237,11 @@ async function carregarRelatorio(data=''){
 }
 
 carregarRelatorio();
+
+async function carregarReclamacoes(){
+    const response = await fetch('http://localhost:3000/api/reclamacoes');
+    const reclamacoes = await response.json();
+}
 
 </script>
 
