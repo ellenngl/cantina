@@ -55,8 +55,8 @@
         }
 
         .grafico-container{
-            background:rgb(90, 57, 57);
-            background-color:#000000;
+            background:rgb(255, 244, 244);
+            background-color:#be2b2b;
             padding:20px;
             border-radius:10px;
             margin-bottom:30px;
@@ -68,7 +68,7 @@
             width:100%;
             border-collapse:collapse;
             background:white;
-            box-shadow:0 2px 8px rgba(0,0,0,0.1);
+            box-shadow:0 2px 8px rgba(235, 99, 99, 0.781);
             background-color: coral;
             color:sienna;
         }
@@ -149,7 +149,20 @@
         <tbody id="tabelaDados"></tbody>
     </table>
 
+<table>
+    <h2 style="margin-top:30px;">Reclamações Registradas</h2>
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Reclamação</th>
+            <th>Data</th>
+        </tr>
+    </thead>
+
+    <tbody id="tabelaReclamacoes"></tbody>
+</table>
 </div>
+
 
 <script> //se o admin não estiver logado, redireciona para a página de login, se estiver logado, carrega o relatório normalmente
     if(localStorage.getItem('adminLogado') !== 'true'){
@@ -163,13 +176,7 @@ async function carregarRelatorio(data=''){
    const response = await fetch(`http://localhost:3000/api/relatorio?data=${data}`);
 
     const dados = await response.json();
-    function filtrar(){
-
-    const data = document.getElementById('filtroData').value;
-
-    carregarRelatorio(data);
-
-}
+ 
     let positivas = 0;
     let negativas = 0;
     let medianas = 0;
@@ -210,8 +217,9 @@ async function carregarRelatorio(data=''){
             negativas++;
         }
 
-        tabela.innerHTML += `
-            <tr> //pega os dados do banco e exibe na tabela
+       //pega os dados do banco e exibe na tabela
+        tabela.innerHTML +=  ` 
+            <tr> 
 
                 <td>${item.id}</td>
                 <td>${item.qualidade_comida}</td>
@@ -235,14 +243,45 @@ async function carregarRelatorio(data=''){
     });
 
 }
+function filtrar(){
 
+    const data = document.getElementById('filtroData').value;
+
+    carregarRelatorio(data);
+
+}
 carregarRelatorio();
+filtrar();
 
 async function carregarReclamacoes(){
-    const response = await fetch('http://localhost:3000/api/reclamacoes');
-    const reclamacoes = await response.json();
-}
 
+    const response = await fetch(
+        'http://localhost:3000/api/reclamacoes'
+    );
+
+    const reclamacoes = await response.json();
+
+    const tabelaReclamacoes =
+    document.getElementById('tabelaReclamacoes');
+
+    tabelaReclamacoes.innerHTML = '';
+
+    reclamacoes.forEach(item => {
+
+        tabelaReclamacoes.innerHTML += `
+            <tr>
+
+                <td>${item.id}</td>
+                <td>${item.reclamacao}</td>
+                <td>${item.data_registro}</td>
+
+            </tr>
+        `;
+
+    });
+
+}
+carregarReclamacoes();
 </script>
 
 </body>

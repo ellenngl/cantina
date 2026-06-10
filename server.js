@@ -59,6 +59,37 @@ app.get('/api/relatorio', (req, res) => {
 
 });
 
+app.post('/api/reclamacoes', (req, res) => {
+    const { reclamacao } = req.body;
+    const sql = `INSERT INTO reclamacoes (reclamacao) VALUES (?)`;
+
+    db.run(sql, [reclamacao], function(err) {
+        if (err) return res.status(400).json({ error: err.message });
+        res.json({ message: 'Reclamação registrada com sucesso!', id: this.lastID });
+    });
+});
+app.get('/api/reclamacoes', (req, res) => {
+
+    const sql = `
+        SELECT * FROM reclamacoes
+        ORDER BY data_registro DESC
+    `;
+
+    db.all(sql, [], (err, rows) => {
+
+        if(err){
+
+            return res.status(400).json({
+                error: err.message
+            });
+
+        }
+
+        res.json(rows);
+
+    });
+
+});
 // LOGIN ADMIN
 app.post('/api/login', (req,res)=>{
 

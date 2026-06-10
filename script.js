@@ -22,12 +22,30 @@ document.getElementById('feedbackForm').addEventListener('submit', async (e) => 
         console.error('Erro ao enviar feedback:', error);
     }
 });
+
+
+
 document.getElementById('reclamacaoForm').addEventListener('submit', async (e) => {
     e.preventDefault(); //impede a pagina de recarregar quando o usuário clicar em Enviar Reclamação
 
     const dados = {
-    texto_reclamacao: texto
-};
+    reclamacao: document.querySelector(
+        'input[name="reclamacao"]'
+    ).value
+    };
 
+  try {
+        const response = await fetch('http://localhost:3000/api/reclamacoes', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(dados)
+        });
 
+        if (response.ok) {
+            alert('Reclamação registrada.');
+            document.getElementById('reclamacaoForm').reset();
+        }
+    } catch (error) {
+        console.error('Erro ao enviar reclamação:', error);
+    }
 });
