@@ -34,6 +34,7 @@ body {
     align-items: center;
     min-height: 100vh; /* Centraliza verticalmente na tela */
     padding: 20px;
+    width: 100vw;
 }
 
 /* ==========================================================================
@@ -47,13 +48,50 @@ body {
     padding: 10px;
 }
 
+#aa{
+    text-align: center; 
+    margin-top: -600px;
+    font-size: 18px;
+    color:rgb(80, 196, 45);
+    border: 2px solid rgb(80, 196, 45);
+    width: 200px;
+    margin-left: 950px;
+
+}
+
+.almoco{
+    margin-left: 192px;
+    margin-top: 10px; 
+}
+.bordaCardapio{
+    border: 2px solid rgb(80, 196, 45);
+    border-radius: 12px;
+    border-width: 3px;
+    margin-left: 761px;
+    margin-top: 25px;
+    width: 600px;
+    height: 200px;
+}
+
+.cardapio{
+    margin-top: 10px;
+    margin-left: -60px;
+    font: bold 18px Arial, sans-serif;
+}
+
+.almoco2{
+    margin-left: 340px;
+    margin-top: -85px;
+    font: bold 18px Arial, sans-serif;
+}
+
 .container {
     background-color: var(--card-color);
     width: 100%;
     max-width: 500px; /* Largura máxima confortável */
+    margin: 0 auto; /* Centraliza horizontalmente */
+    margin-top: 100px;
     border-radius: var(--radius);
-    box-shadow: var(--shadow);
-    transition: var(--transition);
 }
 
 #ceara{
@@ -63,8 +101,8 @@ body {
 }
 #maca{
     width: 60px;
-    margin-bottom: -33px;
-    margin-left: -450px;
+    margin-bottom: -29px;
+    margin-left: -460px;
 }
 #titulo{
     color: gold;
@@ -76,10 +114,7 @@ body {
     margin-top: -30px;
     font-size: 20px;
 }
-/* Efeito sutil ao passar o mouse no card (desktop) */
-.container:hover {
-    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.15);
-}
+/* Efeito sutil ao passar o mouse no card (desktop) *
 
 /* ==========================================================================
    Tipografia e Títulos
@@ -113,8 +148,8 @@ h1 {
 }
 
 .avaliacao img {
-    width: 50px;
-    height: 50px;
+    width: 220px;
+    height: 220px;
     border: 2px solid transparent;
     border-radius: 10px;
     transition: 0.2s;
@@ -122,11 +157,54 @@ h1 {
 
 .avaliacao span {
     margin-top: 5px;
-    font-size: 12px;
+    font-size: 25px;
     font-weight: bold;
 }
-
+#red {
+    color: #e74c3c;
+}
+#orange {
+    color: #e67e22;
+}
+#yellow {
+    color: #f1c40f;
+}
+#green {
+    color: #2ecc71;
+}
+#blue {
+    color: #3498db;
+}
+#enviar {
+    background-color: #A7EA7D;
+    color: #505351;
+    border: none;
+    padding: 10px 20px;
+    border-radius: var(--radius);
+    cursor: pointer;
+    transition: var(--transition);
+    font: bold 18px Arial, sans-serif;
+    margin-top: 70px;
+    margin-left: 685px;
+}
 .avaliacao input:checked + label img {
     border-color: #4CAF50;
     transform: scale(1.1);
+}
+#qrcode img{
+    width: 150px;
+    height: 150px;
+    margin-left: 120px;
+    margin-top: -80px;
+}
+#texto{
+    margin-left: -155px;
+    margin-top: -900px;
+    margin-bottom: 150px;
+}
+#rodape {
+    margin-top: 40px;
+    background-color: rgb(80, 196, 45);
+    height: 70px;
+    font: bold 18px Arial, sans-serif;
 }
