@@ -56,11 +56,10 @@ app.get('/api/relatorio', (req, res) => {
         res.json(rows);
 
     });
-
 });
 
-app.post('/api/reclamacoes', (req, res) => {
-    const { reclamacao } = req.body;
+app.post('/api/reclamacao', (req, res) => {
+    const {reclamacao} = req.body;
     const sql = `INSERT INTO reclamacoes (reclamacao) VALUES (?)`;
 
     db.run(sql, [reclamacao], function(err) {
@@ -68,16 +67,34 @@ app.post('/api/reclamacoes', (req, res) => {
         res.json({ message: 'Reclamação registrada com sucesso!', id: this.lastID });
     });
 });
-app.get('/api/reclamacoes', (req, res) => {
 
-    const sql = `
+app.get('/api/relatorio-reclamacoes', (req, res) => {
+
+    const data = req.query.data;
+
+    let sql = `
         SELECT * FROM reclamacoes
+    `;
+
+    let params = [];
+
+    if(data){
+
+        sql += `
+            WHERE DATE(data_registro) = ?
+        `;
+
+        params.push(data);
+
+    }
+
+    sql += `
         ORDER BY data_registro DESC
     `;
 
-    db.all(sql, [], (err, rows) => {
+    db.all(sql, params, (err, rows) => {
 
-        if(err){
+        if (err) {
 
             return res.status(400).json({
                 error: err.message
@@ -88,15 +105,16 @@ app.get('/api/reclamacoes', (req, res) => {
         res.json(rows);
 
     });
-
 });
+
+
 // LOGIN ADMIN
 app.post('/api/login', (req,res)=>{
 
     const { usuario, senha } = req.body;
 
     // LOGIN SIMPLES
-    if(usuario === 'coordenacaoMCVM2026' && senha === 'MCVM2026'){
+    if(usuario === 'admin' && senha === '1234'){
 
         res.json({
             sucesso:true

@@ -7,8 +7,8 @@ document.getElementById('feedbackForm').addEventListener('submit', async (e) => 
         ).value //Diz o valor (Excelente, Bom, Eh, Ruim ou Pessimo) do radio selecionado
     };
 
-    try {
-        const response = await fetch('http://localhost:3000/api/feedback', {
+        try {
+            const response = await fetch('http://localhost:3000/api/feedback', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(dados)
@@ -25,17 +25,15 @@ document.getElementById('feedbackForm').addEventListener('submit', async (e) => 
 
 
 
-document.getElementById('reclamacaoForm').addEventListener('submit', async (e) => {
-    e.preventDefault(); //impede a pagina de recarregar quando o usuário clicar em Enviar Reclamação
+document.getElementById('enviarRecla').addEventListener('submit', async (e) => {
+    e.preventDefault(); //Quando o usuário clicar em Enviar Resposta, executa essa função.
 
     const dados = {
-    reclamacao: document.querySelector(
-        'input[name="reclamacao"]'
-    ).value
+           reclamacao: document.querySelector('[name="reclamacao"]').value
     };
 
-  try {
-        const response = await fetch('http://localhost:3000/api/reclamacoes', {
+    try {
+        const response = await fetch('http://localhost:3000/api/reclamacao', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(dados)
@@ -43,7 +41,7 @@ document.getElementById('reclamacaoForm').addEventListener('submit', async (e) =
 
         if (response.ok) {
             alert('Reclamação registrada.');
-            document.getElementById('reclamacaoForm').reset();
+            document.getElementById('enviarRecla').reset();
         }
     } catch (error) {
         console.error('Erro ao enviar reclamação:', error);

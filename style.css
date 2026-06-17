@@ -23,18 +23,24 @@
     padding: 0;
     box-sizing: border-box; /* Garante que padding não altere o tamanho final */
 }
-
+html, body {
+    height: 100%;
+    max-width: 100%;
+    overflow-x: hidden; /* Evita scroll horizontal */
+    margin: 0;
+    padding: 0;
+}
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     background-color: var(--bg-color);
     color: var(--text-color);
     line-height: 1.6;
-    display:contents;
+    display: contents;
     justify-content: center;
     align-items: center;
     min-height: 100vh; /* Centraliza verticalmente na tela */
     padding: 20px;
-    width: 100vw;
+    width: 100%;
 }
 
 /* ==========================================================================
@@ -207,4 +213,35 @@ h1 {
     background-color: rgb(80, 196, 45);
     height: 70px;
     font: bold 18px Arial, sans-serif;
+}
+#textoReclamacao{
+    border: 2px solid rgb(80, 196, 45);
+    padding-bottom: -300px;
+    border-radius: 6px;
+    border-width: 3px;
+    margin-left: 830px;
+    margin-top: 25px;
+    width: 450px;
+    height: 300px;
+    box-sizing: border-box; 
+    padding-top: 15px;
+    padding-left: 15px;
+    padding-bottom: 250px;
+}   
+#enviarRecla{
+    background-color: #A7EA7D;
+    justify-content: left;
+    color: #505351;
+    border: none;
+    padding: 10px 20px;
+    border-radius: var(--radius);
+    cursor: pointer;
+    transition: var(--transition);
+    font: bold 18px Arial, sans-serif;
+    margin-top: 110px;
+    margin-left: 1450px;
+}
+#voltarRecla{
+    margin-left: 1000px;
+    color: #50C42D;
 }

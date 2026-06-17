@@ -12,17 +12,18 @@
         body{
             padding:20px;
             display:block;
-             background-color:rgb(212, 255, 198);
+             background-color:rgb(237, 253, 224);
             color:#000000;
         }
-
+        #Titulo{
+            color: gold;
+        }
         .dashboard{
             max-width:1200px;
             margin:auto;
-            color:rgb(72, 255, 0);
-            background-color:rgb(240, 198, 12);
+            color: white;
+            background-color:rgb(80, 196, 45);
         }
-
         .cards{
             display:grid;
             grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
@@ -33,30 +34,42 @@
 
         .card{
             background:white;
-            padding:20px;
+            padding: 2px;
             border-radius:10px;
             box-shadow:0 2px 8px rgba(0,0,0,0.1);
             color:blueviolet;
         }
 
+        #avaliacoesPositivas{
+            margin-left: 20px;
+        }
+
+        #avaliacoesMedianas{
+            margin-left: 20px;
+        }
+
+        #avaliacoesNegativas{
+            margin-left: 20px;
+        }
+
+
         .card h2{
+            margin-left: 20px;
             font-size:1rem;
             margin-bottom:10px;
-            color:#c9ffcc;
-            background-color:#ff00d4;
+            color: black;
+            background-color: white;
         }
 
         .numero{
             font-size:2rem;
             font-weight:bold;
-            color:#0f2e11;
-            background-color:#c9ffcc;
-
+            color:#0f2e11;;
         }
 
         .grafico-container{
             background:rgb(255, 244, 244);
-            background-color:#be2b2b;
+            background-color: white;
             padding:20px;
             border-radius:10px;
             margin-bottom:30px;
@@ -68,55 +81,53 @@
             width:100%;
             border-collapse:collapse;
             background:white;
-            box-shadow:0 2px 8px rgba(235, 99, 99, 0.781);
-            background-color: coral;
-            color:sienna;
+            box-shadow:0 2px 8px black;
         }
 
         th, td{
             padding:12px;
             border-bottom:1px solid #ddd;
             text-align:center;
-            color:red;
-            background-color:rgb(92, 86, 61);
+            color: black;
+            background-color: white;
         }
 
         th{
             background:#797979;
-            color:rgb(255, 0, 242);
-            background-color:rgb(255, 242, 184);
+            color: black;
+            background-color: #84D452;
         }
         #graficoQualidade{
             background-color:rgb(216, 189, 66);
-            color:rgb(255, 130, 255)
         }
         #tabelaDados{
-            background-color:rgb(255, 87, 213);
-            color:rgb(255, 43, 202);
+            background-color:black;
+            color:black;
         }
+      
     </style>
 </head>
 <body>
 
 <div class="dashboard">
 
-    <h1>Painel do Refeitório</h1>
+    <h1 id="Titulo">Painel do Refeitório</h1>
 
     <div class="cards">
         <div class="card">
-            <h2>Avaliações Positivas</h2>
+            <h2>Avaliações Positivas:</h2>
             <div class="numero" id="avaliacoesPositivas">0</div>
         </div>
     </div>
     <div class="cards">
         <div class="card">
-            <h2>Avaliações Medianas</h2>
+            <h2>Avaliações Medianas:</h2>
             <div class="numero" id="avaliacoesMedianas">0</div>
         </div>
     </div>
     <div class="cards">
         <div class="card">
-            <h2>Avaliações Negativas</h2>
+            <h2>Avaliações Negativas:</h2>
             <div class="numero" id="avaliacoesNegativas">0</div>
         </div>
     </div>
@@ -127,7 +138,7 @@
 
     <input type="date" id="filtroData">
 
-    <button onclick="filtrar()">Buscar</button>
+    <button onclick="filtrar()" id="botaoFiltrar">Buscar</button>
 
 </div>
 
@@ -149,8 +160,8 @@
         <tbody id="tabelaDados"></tbody>
     </table>
 
+        <h2 style="margin-top:30px;">Reclamações Registradas</h2>
 <table>
-    <h2 style="margin-top:30px;">Reclamações Registradas</h2>
     <thead>
         <tr>
             <th>ID</th>
@@ -220,7 +231,6 @@ async function carregarRelatorio(data=''){
        //pega os dados do banco e exibe na tabela
         tabela.innerHTML +=  ` 
             <tr> 
-
                 <td>${item.id}</td>
                 <td>${item.qualidade_comida}</td>
                 <td>${item.data_registro}</td>
@@ -250,38 +260,25 @@ function filtrar(){
     carregarRelatorio(data);
 
 }
-carregarRelatorio();
-filtrar();
+async function carregarReclamacoes(data=''){
+    const response = await fetch(`http://localhost:3000/api/relatorio-reclamacoes?data=${data}`);
+    const dadosReclamacoes = await response.json();
 
-async function carregarReclamacoes(){
-
-    const response = await fetch(
-        'http://localhost:3000/api/reclamacoes'
-    );
-
-    const reclamacoes = await response.json();
-
-    const tabelaReclamacoes =
-    document.getElementById('tabelaReclamacoes');
-
+    const tabelaReclamacoes = document.getElementById('tabelaReclamacoes');
     tabelaReclamacoes.innerHTML = '';
 
-    reclamacoes.forEach(item => {
-
-        tabelaReclamacoes.innerHTML += `
-            <tr>
-
+    dadosReclamacoes.forEach(item => {
+        tabelaReclamacoes.innerHTML += ` 
+            <tr> 
                 <td>${item.id}</td>
                 <td>${item.reclamacao}</td>
                 <td>${item.data_registro}</td>
-
             </tr>
         `;
-
     });
-
 }
-carregarReclamacoes();
+
+
 </script>
 
 </body>

@@ -13,7 +13,7 @@ const db = new sqlite3.Database(dbPath, (err) => {
         
         // Cria a tabela de feedbacks se ela não existir
         db.run(`
-            CREATE TABLE IF NOT EXISTS feedbacks (
+            CREATE TABLE IF NOT EXISTS feedbacks(
                 id INTEGER PRIMARY KEY AUTOINCREMENT,
                 qualidade_comida TEXT,
                 data_registro DATETIME DEFAULT CURRENT_TIMESTAMP
@@ -30,12 +30,12 @@ const db = new sqlite3.Database(dbPath, (err) => {
 });
       // cria a tabela de reclamações se ela não existir
         db.run(`
-            CREATE TABLE IF NOT EXISTS reclamacoes (
+            CREATE TABLE IF NOT EXISTS reclamacoes(
                 id INTEGER PRIMARY KEY AUTOINCREMENT,
                 reclamacao TEXT,
                 data_registro DATETIME DEFAULT CURRENT_TIMESTAMP
             )
-        `, (err) => {
+            `, (err) => {
             if (err) {
                 console.error('Erro ao criar a tabela reclamacoes:', err.message);
             } else {

@@ -14,13 +14,34 @@
         <p id="subtitulo">Sua participação é importante!</p>
     </header>
     <div id="avaliaçao-almoço">
-        <h2>AVALIE O ALMOÇO</h2>
+        <h2 id="aa">AVALIE SEU ALMOÇO</h2>
+    </div>
+    <div class="bordaCardapio">
+        <div class="almoco">
+        <h2>CARDAPIO 18/06</h2>
+        <ul class="cardapio">
+            <li> Farofa</li>
+            <li> Salada</li>
+            <li> Suco</li>
+            <li> Fruta</li>
+        </ul>
+        </div>
+        <div class="almoco2">
+        <ul>
+            <li> Arroz </li>
+            <li> Macarrão</li>
+            <li> Carne de porco (cozida)</li>
+            <li> Feijão</li>
+        </ul>
+        </div>
     </div>
     <form id="reclamacaoForm">
-        <textarea id="textoReclamacao" placeholder="Reclame aqui..." rows="8" cols="50"></textarea>
-        <br>
-        <button type="submit">ENVIAR</button>
-    </form>
+    <input id="textoReclamacao" name="reclamacao" placeholder="RECLAME AQUI..." required>
+    <br>
+    <button id="enviarRecla" type="submit">ENVIAR</button>
+    <br>
+    <a href="avaliaçao.html" id="voltarRecla">Voltar ao início</a>
+</form>
     
 <script src="script.js"></script>
 </body>
